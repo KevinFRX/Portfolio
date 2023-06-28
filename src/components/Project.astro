@@ -1,0 +1,22 @@
+---
+const { image, name, description, github, homepage } = Astro.props;
+async function loadImage(image) {
+    return fetch(image)
+        .then((response) => response.json())
+        .then((data) => data.download_url);
+}
+let img = "image-not-found.jpg";
+if (image) {
+    img = await loadImage(image);
+}
+---
+
+<div class="project">
+    <img src={img} class="project-image" />
+    <h3 class="project-name">{name}</h3>
+    <p>{description}</p>
+    <div>
+        <a href={github} target="_blank">GitHub</a>
+        <a href={homepage} target="_blank">Homepage</a>
+    </div>
+</div>

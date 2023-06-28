@@ -1,0 +1,81 @@
+---
+import Projects from "../components/Projects.astro";
+async function loadProjects() {
+    return fetch("https://api.github.com/users/KevinFRX/repos")
+        .then((response) => response.json())
+        .then((data) => filterProjects(data));
+}
+function filterProjects(list) {
+    let arr = [
+        "235422783",
+        "512287923",
+        "535438521",
+        "515295002",
+        "485539963",
+        "455227632",
+        "452270052",
+        "490781071",
+        "657278056",
+        "501842690",
+        "451994231",
+    ];
+    let newList = [];
+
+    list.forEach((element) => {
+        let i = 0;
+        for (; i < arr.length; i++) {
+            if (element.id == arr[i]) {
+                break;
+            }
+        }
+        if (i == arr.length) {
+            newList.push(element);
+        }
+    });
+
+    return newList;
+}
+let loadError = false;
+let projects;
+try {
+    projects = await loadProjects();
+} catch {
+    loadError = true;
+}
+// async function loadImage() {
+//     return fetch(
+//         "https://api.github.com/repos/KevinFRX/account_manager_flask/contents/preview.png"
+//     )
+//         .then((response) => response.json())
+//         .then((data) => getImageURL(data));
+// }
+// function getImageURL(image) {
+//     console.log(image);
+//     return image.download_url;
+// }
+// let image = loadImage();
+// console.log(image);
+---
+
+<section>
+    <div>
+        <h2>Portfolio</h2>
+        {
+            (
+                /*loadError ? <p>Error</p> :*/ <Projects
+                    projects={
+                        projects /*[{id: "1", content_url: "https://raw.githubusercontent.com/KevinFRX/account_manager_flask/master/preview.png", name: "Tesla", description: "Astro y Tailwind"}, {id: "2", content_url: "https://raw.githubusercontent.com/KevinFRX/account_manager_flask/master/preview.png", name:"Account Manager", description: "Flask y Bootstrap"}]*/
+                    }
+                />
+            )
+        }
+    </div>
+</section>
+
+<style>
+    section {
+        background-color: white;
+        padding: 80px 0;
+        text-align: center;
+    }
+</style>

@@ -1,81 +1,98 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import MeSection from "../components/MeSection.astro";
+import PortfolioSection from "../components/PortfolioSection.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome!">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<MeSection />
+		<PortfolioSection />
 	</main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+<!-- <script>
+	function filterProjects(list) {
+		let arr = [
+			"235422783",
+			"512287923",
+			"535438521",
+			"515295002",
+			"485539963",
+			"455227632",
+			"452270052",
+			"490781071",
+			"657278056",
+			"501842690",
+			"451994231",
+		];
+		let newList = [];
+
+		list.forEach((element) => {
+			let i = 0;
+			for (; i < arr.length; i++) {
+				if (element.id == arr[i]) {
+					break;
+				}
+			}
+			if (i == arr.length) {
+				newList.push(element);
+			}
+		});
+		console.log(newList);
+
+		return newList;
 	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
+
+	async function loadProjects() {
+		return fetch("https://api.github.com/users/KevinFRX/repos")
+			.then((response) => response.json())
+			.then((data) => filterProjects(data));
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+
+	function buildProjectBoxes(projects) {
+		// obtener el contenedor
+		const $container = document.getElementById("projects");
+
+		// ciclo
+		projects.forEach((element) => {
+			const $div = builtProjectBox(element);
+			$container.appendChild($div);
+		});
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
+
+	function builtProjectBox(project) {
+		// crear el div
+		const $div = document.createElement("div");
+		$div.classList.add("project");
+
+		// crear la img
+		const $img = document.createElement("img");
+		$img.src = "tesla.jpg";
+		$img.classList.add("project-image");
+		$div.appendChild($img);
+
+		// crear el h3
+		const $h3 = document.createElement("h3");
+		$h3.textContent = project.name;
+		$h3.classList.add("project-name");
+		$div.appendChild($h3);
+
+		// crear el p
+		const $p = document.createElement("p");
+		$p.textContent = project.description;
+		$div.appendChild($p);
+
+		return $div;
 	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
+
+	loadProjects().then((projects) => buildProjectBoxes(projects));
+
+	const interval = setInterval(refreshProject, 600000);
+
+	function refreshProject() {
+		const $container = document.getElementById("projects");
+		$container.innerHTML = "";
+		loadProjects().then((projects) => buildProjectBoxes(projects));
 	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+</script> -->

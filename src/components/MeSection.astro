@@ -1,0 +1,37 @@
+<section>
+    <div>
+        <h1>Kevin Fundora Ricardo</h1>
+        <img id="profile-picture" src="" alt="Profile Picture" />
+    </div>
+</section>
+
+<style>
+    section {
+        background-color: rgb(200, 200, 200);
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-top: 20px;
+    }
+</style>
+
+<script>
+    fetch("https://api.github.com/users/KevinFRX")
+        .then((response) => response.json())
+        .then((data) => {
+            const profileImage = data.avatar_url;
+            const imgElement = document.getElementById(
+                "profile-picture"
+            ) as HTMLImageElement;
+            imgElement.src = profileImage;
+        });
+</script>

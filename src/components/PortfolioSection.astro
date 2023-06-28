@@ -18,6 +18,7 @@ function filterProjects(list) {
         "657278056",
         "501842690",
         "451994231",
+        "659491841", //portfolio
     ];
     let newList = [];
 
@@ -32,7 +33,6 @@ function filterProjects(list) {
             newList.push(element);
         }
     });
-
     return newList;
 }
 let loadError = false;
@@ -47,7 +47,7 @@ try {
 <section>
     <div>
         <h2>Portfolio</h2>
-        {(loadError ? <p>Error</p> :<Projects projects={projects} />)}
+        {loadError ? <p>Error</p> : <Projects projects={projects} />}
     </div>
 </section>
 

@@ -5,7 +5,7 @@ const { projects } = Astro.props;
 
 <div id="projects" class="projects">
     {
-        projects.map((p) => {
+        projects.map((p) => (
             <Project
                 id={p.id}
                 image={p.contents_url.replace("{+path}", "preview.png")}
@@ -13,8 +13,8 @@ const { projects } = Astro.props;
                 description={p.description}
                 github={p.html_url}
                 homepage={p.homepage}
-            />;
-        })
+            />
+        ))
     }
 </div>
 

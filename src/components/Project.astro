@@ -5,7 +5,7 @@ async function loadImage(image) {
         .then((response) => response.json())
         .then((data) => data.download_url);
 }
-let img = "image-not-found.jpg";
+let img = "";
 if (image) {
     img = await loadImage(image);
 }

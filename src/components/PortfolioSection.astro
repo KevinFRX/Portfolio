@@ -42,33 +42,12 @@ try {
 } catch {
     loadError = true;
 }
-// async function loadImage() {
-//     return fetch(
-//         "https://api.github.com/repos/KevinFRX/account_manager_flask/contents/preview.png"
-//     )
-//         .then((response) => response.json())
-//         .then((data) => getImageURL(data));
-// }
-// function getImageURL(image) {
-//     console.log(image);
-//     return image.download_url;
-// }
-// let image = loadImage();
-// console.log(image);
 ---
 
 <section>
     <div>
         <h2>Portfolio</h2>
-        {
-            (
-                /*loadError ? <p>Error</p> :*/ <Projects
-                    projects={
-                        projects /*[{id: "1", content_url: "https://raw.githubusercontent.com/KevinFRX/account_manager_flask/master/preview.png", name: "Tesla", description: "Astro y Tailwind"}, {id: "2", content_url: "https://raw.githubusercontent.com/KevinFRX/account_manager_flask/master/preview.png", name:"Account Manager", description: "Flask y Bootstrap"}]*/
-                    }
-                />
-            )
-        }
+        {(loadError ? <p>Error</p> :<Projects projects={projects} />)}
     </div>
 </section>
 

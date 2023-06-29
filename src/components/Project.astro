@@ -13,14 +13,28 @@ if (image) {
 
 <div class="project">
     <img src={img} class="project-image" />
-    <h3 class="project-name">{name}</h3>
-    <p>{description}</p>
-    <div>
-        <a href={github} target="_blank">GitHub</a>
-        {homepage ? (
-            <a href={homepage} target="_blank">Homepage</a>
-        ) : (
-            <a href="#" aria-disabled class="disabled">Homepage</a>
-        )}
+    <div class="project-text">
+        <h3 class="project-name">{name}</h3>
+        <p class="project-description">{description}</p>
+
+        <div>
+            <a href={github} target="_blank" class="project-link">Source code</a
+            >
+            {
+                homepage ? (
+                    <a href={homepage} target="_blank" class="project-link">
+                        Deployed site
+                    </a>
+                ) : (
+                    <a
+                        href="#"
+                        aria-disabled
+                        class="project-link project-link-disabled"
+                    >
+                        Deployed site
+                    </a>
+                )
+            }
+        </div>
     </div>
 </div>

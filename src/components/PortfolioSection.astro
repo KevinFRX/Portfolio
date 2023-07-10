@@ -23,14 +23,15 @@ function filterProjects(list) {
     let newList = [];
 
     list.forEach((element) => {
-        let i = 0;
-        for (; i < arr.length; i++) {
-            if (element.id == arr[i]) {
-                break;
-            }
-        }
-        if (i == arr.length) {
-            newList.push(element);
+        // let i = 0;
+        // while (i < arr.length && element.id != arr[i]) {
+        //     i++
+        // }
+        // if (i == arr.length) {
+        //     newList.push(element);
+        // }
+        if (arr.findIndex((i) => i == element.id) == -1) {
+            newList.push(element)
         }
     });
     return newList;
@@ -59,5 +60,6 @@ try {
 
     h2 {
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 28px;
     }
 </style>

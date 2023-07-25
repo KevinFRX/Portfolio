@@ -1,65 +1,77 @@
 ---
 import Projects from "../components/Projects.astro";
 async function loadProjects() {
-    return fetch("https://api.github.com/users/KevinFRX/repos")
-        .then((response) => response.json())
-        .then((data) => filterProjects(data));
+  return fetch("https://api.github.com/users/KevinFRX/repos")
+    .then((response) => response.json())
+    .then((data) => filterProjects(data));
 }
 function filterProjects(list) {
-    let arr = [
-        "235422783",
-        "512287923",
-        "535438521",
-        "515295002",
-        "485539963",
-        "455227632",
-        "452270052",
-        "490781071",
-        "657278056",
-        "501842690",
-        "451994231",
-        "659491841", //portfolio
-    ];
-    let newList = [];
+  let arr = [
+    "235422783",
+    "512287923",
+    "535438521",
+    "515295002",
+    "485539963",
+    "455227632",
+    "452270052",
+    "490781071",
+    "657278056",
+    "501842690",
+    "451994231",
+    "659491841", // portfolio
+    "655866481", // my page
+  ];
+  let newList = [];
 
-    list.forEach((element) => {
-        // let i = 0;
-        // while (i < arr.length && element.id != arr[i]) {
-        //     i++
-        // }
-        // if (i == arr.length) {
-        //     newList.push(element);
-        // }
-        if (arr.findIndex((i) => i == element.id) == -1) {
-            newList.push(element)
-        }
-    });
-    return newList;
+  list.forEach((element) => {
+    // let i = 0;
+    // while (i < arr.length && element.id != arr[i]) {
+    //     i++
+    // }
+    // if (i == arr.length) {
+    //     newList.push(element);
+    // }
+    if (arr.findIndex((i) => i == element.id) == -1) {
+      newList.push(element);
+    }
+  });
+  return newList;
 }
 let loadError = false;
 let projects;
 try {
-    projects = await loadProjects();
+  projects = await loadProjects();
 } catch {
-    loadError = true;
+  loadError = true;
 }
 ---
 
 <section>
-    <div>
-        <h2>Portfolio</h2>
-        {loadError ? <p>An error has occurred: This website uses github APIs, maybe you were blocked for making too many requests...or maybe it's just my fault, in any case wait for the problem to be solved. Thank you :)</p> : <Projects projects={projects} />}
-    </div>
+  <div>
+    <h2>Portfolio</h2>
+    {
+      loadError ? (
+        <p>
+          An error has occurred: This website uses github APIs, maybe you were
+          blocked for making too many requests...or maybe it's just my fault, in
+          any case wait for the problem to be solved. Thank you :)
+        </p>
+      ) : (
+        <Projects projects={projects} />
+      )
+    }
+  </div>
 </section>
 
 <style>
-    section {
-        padding: 80px 0;
-        text-align: center;
-    }
+  section {
+    padding: 80px 0;
+    text-align: center;
+  }
 
-    h2 {
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 28px;
-    }
+  h2 {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 28px;
+  }
 </style>

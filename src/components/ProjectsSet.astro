@@ -1,12 +1,12 @@
 ---
-import Project from "./Project.astro";
+import ProjectCard from "./ProjectCard.astro";
 const { projects } = Astro.props;
 ---
 
 <div id="projects" class="projects">
     {
         projects.map((p) => (
-            <Project
+            <ProjectCard
                 id={p.id}
                 image={p.contents_url.replace("{+path}", "preview.png")}
                 name={p.name}

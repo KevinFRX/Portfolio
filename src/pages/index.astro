@@ -1,6 +1,9 @@
 ---
-import MeSection from "../components/MeSection.astro";
-import PortfolioSection from "../components/PortfolioSection.astro";
+import Header from "../components/Header.astro";
+import AboutSection from "../components/AboutSection.astro";
+import PresentationSection from "../components/PresentationSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import ContactSection from "../components/ContactSection.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -10,8 +13,11 @@ import Layout from "../layouts/Layout.astro";
 </astro>
 
 <Layout title="Portfolio">
+  <Header />
   <main>
-    <MeSection />
-    <PortfolioSection />
+    <PresentationSection />
+    <AboutSection />
+    <ProjectsSection />
+    <ContactSection />
   </main>
 </Layout>

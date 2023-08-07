@@ -12,7 +12,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -51,7 +51,10 @@ const { title } = Astro.props;
     flex-direction: column;
     height: 100vh;
   }
-
+  h2 {
+    font-size: 28px;
+    color: #38b2ac;
+  }
   /* Project List */
   .projects {
     display: flex;

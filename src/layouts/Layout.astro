@@ -12,7 +12,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link href="/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet">
+    <link href="/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -23,6 +23,9 @@ const { title } = Astro.props;
 
 <style is:global>
   :root {
+    --color-1th: #2d3748;
+    --color-2nd: #1a202c;
+    --color-3rd: #38b2ac;
     --accent: 124, 58, 237;
     --accent-gradient: linear-gradient(
       45deg,
@@ -53,7 +56,7 @@ const { title } = Astro.props;
   }
   h2 {
     font-size: 28px;
-    color: #38b2ac;
+    color: var(--color-3rd);
   }
   /* Project List */
   .projects {
@@ -65,11 +68,17 @@ const { title } = Astro.props;
   .project {
     display: grid;
     grid-template-rows: auto 1fr;
-    background-color: #1a202c;
+    background-color: var(--color-2nd);
     margin: 20px;
     border-radius: 5px;
     padding: 20px;
     width: 300px;
+  }
+  .default-project-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
   }
   .project-image {
     width: 100%;
@@ -84,7 +93,7 @@ const { title } = Astro.props;
     justify-content: center;
     padding: 20px;
     border-radius: 5px;
-    background-color: #2d3748;
+    background-color: var(--color-1th);
     overflow: auto;
   }
   .project-name {
@@ -102,7 +111,7 @@ const { title } = Astro.props;
     align-items: end;
   }
   .project-link {
-    background-color: #38b2ac;
+    background-color: var(--color-3rd);
     color: black;
     text-decoration: none;
     display: inline-block;

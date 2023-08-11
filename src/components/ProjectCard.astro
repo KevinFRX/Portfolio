@@ -1,40 +1,44 @@
 ---
 const { image, name, description, github, homepage } = Astro.props;
 async function loadImage(image) {
-    return fetch(image)
-        .then((response) => response.json())
-        .then((data) => data.download_url);
+  return fetch(image)
+    .then((response) => response.json())
+    .then((data) => data.download_url);
 }
 let img = "";
 if (image) {
-    img = await loadImage(image);
+  img = await loadImage(image);
 }
+// function handleImageError(image) {
+//   image.src = "/image-not-found.jpg";
+// }
 ---
 
 <div class="project">
-    <img src={img} class="project-image" />
-    <div class="project-text">
-        <h3 class="project-name">{name}</h3>
-        <p class="project-description">{description}</p>
+  <div class="image-container">
+    <img
+      src={img}
+      alt="Imagen del proyecto"
+      class="project-image"
+    />
+  </div>
+  <div class="project-text">
+    <h3 class="project-name">{name}</h3>
+    <p class="project-description">{description}</p>
 
-        <div class="project-actions">
-            <a href={github} target="_blank" class="project-link">Source code</a
-            >
-            {
-                homepage ? (
-                    <a href={homepage} target="_blank" class="project-link">
-                        Deployed site
-                    </a>
-                ) : (
-                    <a
-                        href="#"
-                        aria-disabled
-                        class="project-link project-link-disabled"
-                    >
-                        Deployed site
-                    </a>
-                )
-            }
-        </div>
+    <div class="project-actions">
+      <a href={github} target="_blank" class="project-link">Source code</a>
+      {
+        homepage ? (
+          <a href={homepage} target="_blank" class="project-link">
+            Deployed site
+          </a>
+        ) : (
+          <a href="#" aria-disabled class="project-link project-link-disabled">
+            Deployed site
+          </a>
+        )
+      }
     </div>
+  </div>
 </div>
